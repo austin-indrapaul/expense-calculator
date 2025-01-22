@@ -37,13 +37,41 @@ function addExpense(edit='true', disableList = [], dataset=[]) {
     categorySelect.name = `expenseCategory${setCount}`;
     categorySelect.id = `expenseCategory${setCount}`;
     categorySelect.className = 'expense-input input-category';
-    categorySelect.onchange = function() { loadTheSubCategoryData(this); };
+    categorySelect.onchange = function() { 
+        if(this.value != "add_edit"){
+            loadTheSubCategoryData(this); 
+            this.setAttribute('data-previousSelectedValue',this.value);
+        } else {
+            const editModal = document.getElementById('editModal');
+            const editModalTitle = document.getElementById('editModal-title');
+            const editModalContent = document.getElementById('editModal-content');
+            console.log('Option clicked:', this.value);
+            const category = this.getAttribute('data-previousSelectedValue');
+            this.value = category;
+            editModal.style.display = 'block';
+            editModalTitle.innerText = "Add / Edit Categories"
+            createList(editModalContent, dataList['CATEGORIES'])
+        }
+    };
     categorySelect.disabled = disableList[1] === 'true';
 
     const subCategorySelect = document.createElement('select');
     subCategorySelect.name = `subexpenseCategory${setCount}`;
     subCategorySelect.id = `subexpenseCategory${setCount}`;
     subCategorySelect.className = 'expense-input input-subcategory';
+    subCategorySelect.onchange = function() { 
+        if(this.value === "add_edit"){
+            const editModal = document.getElementById('editModal');
+            const editModalTitle = document.getElementById('editModal-title');
+            const editModalContent = document.getElementById('editModal-content');
+            console.log('Option clicked:', this.value);
+            const subcategory = this.getAttribute('data-category');
+            this.value = this.getAttribute('data-previousSelectedValue');
+            editModal.style.display = 'block';
+            editModalTitle.innerText = "Add / Edit Sub Categories"
+            createList(editModalContent, dataList[subcategory])
+        }
+    };
     subCategorySelect.disabled = disableList[2] === 'true';
 
     const amountInput = document.createElement('input');
@@ -145,23 +173,24 @@ function populateCategoryData(categoryId, value) {
         //selectElement.disabled = true;
     }
     selectElement.value = value;
-
+    
+    selectElement.setAttribute('data-previousSelectedValue',value);
     
 
     const option = document.createElement('option');
     option.value = "add_edit";
     option.text = "Add new / edit";
     option.classList.add('add_edit');
-    const editModal = document.getElementById('editModal');
-    const editModalTitle = document.getElementById('editModal-title');
-    const editModalContent = document.getElementById('editModal-content');
-    option.addEventListener('click', function() {
-        console.log('Option clicked:', this.value);
-        selectElement.value = categories[0];
-        editModal.style.display = 'block';
-        editModalTitle.innerText = "Add / Edit Categories"
-        createList(editModalContent, categories)
-    });
+    // const editModal = document.getElementById('editModal');
+    // const editModalTitle = document.getElementById('editModal-title');
+    // const editModalContent = document.getElementById('editModal-content');
+    // option.addEventListener('click', function() {
+    //     console.log('Option clicked:', this.value);
+    //     selectElement.value = categories[0];
+    //     editModal.style.display = 'block';
+    //     editModalTitle.innerText = "Add / Edit Categories"
+    //     createList(editModalContent, categories)
+    // });
 
     selectElement.appendChild(option);
 }
@@ -255,22 +284,24 @@ function populateSubCategoryData(category, subcategoryId, value){
         //selectElement.disabled = true;
     }
 
-    selectElement.value = value;
-    
+    selectElement.value = value;    
+    selectElement.setAttribute('data-previousSelectedValue',value);
+    selectElement.setAttribute('data-category',category);
+
     const option = document.createElement('option');
     option.value = "add_edit";
     option.text = "Add new / edit";
     option.classList.add('add_edit');
-    const editModal = document.getElementById('editModal');
-    const editModalTitle = document.getElementById('editModal-title');
-    const editModalContent = document.getElementById('editModal-content');
-    option.addEventListener('click', function() {
-        console.log('Option clicked:', this.value);
-        selectElement.value = subCategories[0];
-        editModal.style.display = 'block';
-        editModalTitle.innerText = "Add / Edit Sub-Categories"
-        createList(editModalContent, subCategories);
-    });
+    // const editModal = document.getElementById('editModal');
+    // const editModalTitle = document.getElementById('editModal-title');
+    // const editModalContent = document.getElementById('editModal-content');
+    // option.addEventListener('click', function() {
+    //     console.log('Option clicked:', this.value);
+    //     selectElement.value = subCategories[0];
+    //     editModal.style.display = 'block';
+    //     editModalTitle.innerText = "Add / Edit Sub-Categories"
+    //     createList(editModalContent, subCategories);
+    // });
 
     selectElement.appendChild(option);
 }
@@ -297,13 +328,17 @@ function loadTheSubCategoryData(element){
         const editModal = document.getElementById('editModal');
         const editModalTitle = document.getElementById('editModal-title');
         const editModalContent = document.getElementById('editModal-content');
-        option.addEventListener('click', function() {
-            console.log('Option clicked:', this.value);
-            selectElement.value = subCategories[0];
-            editModal.style.display = 'block';
-            editModalTitle.innerText = "Add / Edit Sub-Categories"
-            createList(editModalContent, subCategories);
-        });
+        
+        selectElement.setAttribute('data-category',category);
+        selectElement.setAttribute('data-previousSelectedValue',subCategories[0]);
+
+        // option.addEventListener('click', function() {
+        //     console.log('Option clicked:', this.value);
+        //     selectElement.value = subCategories[0];
+        //     editModal.style.display = 'block';
+        //     editModalTitle.innerText = "Add / Edit Sub-Categories"
+        //     createList(editModalContent, subCategories);
+        // });
 
         selectElement.appendChild(option);
     }

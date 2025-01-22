@@ -1,12 +1,24 @@
 header {
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;  /* Distribute space between elements */
+    align-items: center;  /* Vertically center items */
+    width: 100%;  /* Full width */
+    padding: 10px;  /* Optional padding */
 }
-header > h1 {
-    margin-left: auto;
+
+header > h2 {
+    margin: 0 auto;  /* Center h2 horizontally */
+    text-align: center;  /* Ensure text is centered */
 }
+
+#json-uploadBtn {
+    background-color: rgb(255, 244, 89);
+    width: 15vw;
+    margin-right: 3%;
+    justify-self: end;
+    align-self: center;  /* Vertically center button */
+}
+
 .expense-input{
     margin: 0.2vh 1vw;
     height: 3vh;
@@ -65,7 +77,6 @@ header > h1 {
 }
 #form{
     max-height: 65vh;
-    overflow: scroll;
 }
 @media only screen and (min-width: 700px) {
     .input-edit{
@@ -127,18 +138,6 @@ header > h1 {
 }
 .listItemBtn{
     margin: 1rem;
-}
-
-#json-uploadBtn {
-    /* position: absolute;
-    right: 2.5vw;
-    top: 4vh;
-    width: 12vw;
-    padding: 3px; */
-    margin-left: auto;
-    background-color: rgb(255, 244, 89);
-    width: 15vw;
-    margin-right: 3%;
 }
 
 #formsetBtnGroup{

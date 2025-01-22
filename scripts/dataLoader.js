@@ -69,8 +69,11 @@ function addExpense(edit='true', disableList = [], dataset=[]) {
         deleteButton.style.backgroundColor = "#dc3545"; // Set background color if not disabled
     }
     deleteButton.onclick = function() { 
-        formSet.remove(); 
-    }; // Remove the set on click // TODO:CONFIRM BEFORE DELETE
+        const confirmDelete = confirm("Are you sure you want to delete this?");
+        if (confirmDelete) {
+            formSet.remove();
+        }
+    }; // Remove the set on click
 
     // Append all elements to the form set div
     formSet.appendChild(checkbox);
@@ -187,8 +190,11 @@ function createList(listContainer, list) {
         deleteButton.textContent = '❌';
         deleteButton.classList.add('deleteList');
         deleteButton.disabled = 'true'
-        deleteButton.addEventListener('click', () => {
-            tableRow.remove();
+        deleteButton.addEventListener('click', () => {        
+            const confirmDelete = confirm("Are you sure you want to delete this?");
+            if (confirmDelete) {
+                tableRow.remove();
+            }
         });
 
         actionsCell.appendChild(deleteButton);

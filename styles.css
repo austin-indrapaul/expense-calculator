@@ -76,7 +76,7 @@ header > h2 {
     background-color: #eaeaea!important;
 }
 #form{
-    max-height: 65vh;
+    max-height: 58vh;
     overflow:auto;
 }
 @media only screen and (min-width: 700px) {

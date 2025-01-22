@@ -1,22 +1,23 @@
 header {
     display: flex;
-    justify-content: space-between;  /* Distribute space between elements */
-    align-items: center;  /* Vertically center items */
-    width: 100%;  /* Full width */
-    padding: 10px;  /* Optional padding */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0px;  /* Added vertical padding */
 }
 
 header > h2 {
-    margin: 0 auto;  /* Center h2 horizontally */
-    text-align: center;  /* Ensure text is centered */
+    position: absolute;  /* Center the title */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 #json-uploadBtn {
     background-color: rgb(255, 244, 89);
     width: 15vw;
-    margin-right: 3%;
-    justify-self: end;
-    align-self: center;  /* Vertically center button */
+    margin-left: auto;  /* Push button to the right */
+    margin-right: 12px;
 }
 
 .expense-input{

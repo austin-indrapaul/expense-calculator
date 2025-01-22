@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+  </head>
+  <body>
+    <header>
+      <h1>Expense Calculator</h1>
+      <input type="file" id="fileInput" accept=".json" style="display:none;" onChange="handleFileUpload(event)"/>
+      <button id="json-uploadBtn" onclick="document.getElementById('fileInput').click()">
+        <i class="bi bi-upload"></i>
+      </button>
+    </header>
+    <div id="form">
+      <!-- <div id="set1">
+        <input type="checkbox" id="expenseEdit1" name="expenseEdit1" class="expense-input input-edit">
+        <input type="date" name="expenseDate1" id="expenseDate1" class="expense-input input-date"/>
+        <select name="expenseCategory1" id="expenseCategory1" onchange="loadTheSubCategoryData(this)" class="expense-input  input-category"></select>
+        <select name="subexpenseCategory1" id="subexpenseCategory1" class="expense-input input-subcategory"></select>
+        <input type="number" name="expense1" id="expense1" class="expense-input input-amount"/>
+        <button type="button" class="expense-input input-delete">
+            <i class="bi bi-trash"></i>
+        </button>
+      </div> -->
+    </div>
+    <div id="formsetBtnGroup">
+      <button id="addSetButton" class="formsetBtn">Add Set</button>
+      <button class="formsetBtn" onclick="calculateExpense()">Calculate</button>
+      <button class="formsetBtn" onclick="downloadTheFormData()">Download</button>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="editModal-title"></h2>
+            <div id="editModal-content"></div>
+        </div>
+    </div>
+
+    <div id="analysis-container">
+      <div class="analysis-container-item" id="monthly-exp"></div>
+      <div class="analysis-container-item" id="overall-exp"></div>
+      <div class="analysis-container-item" id="overall-category-exp"></div>
+      <div class="analysis-container-item" id="overall-subcategory-exp"></div>
+    </div>
+
+    <script src="/scripts/data.js"></script>
+    <script src="/scripts/expenseCalculator.js"></script>
+    <script src="/scripts/dataLoader.js"></script>
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>

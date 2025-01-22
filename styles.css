@@ -1,0 +1,167 @@
+header {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+header > h1 {
+    margin-left: auto;
+}
+.expense-input{
+    margin: 0.2vh 1vw;
+    height: 3vh;
+    background-color: white;
+}
+.expense-input:disabled {
+    background-color: #e9ecef; /* Light gray background */
+    color: #6c757d; /* Gray text */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    opacity: 1; /* Slightly transparent */
+}
+
+#form > div{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 0.6vh 1vw;
+}
+
+#form div:nth-child(odd) {
+    background-color:#FFFFE0; 
+}
+
+#form div:nth-child(even) {
+    background-color: #FFF5E1  ;
+}
+
+.add_edit{
+    background-color: antiquewhite;
+}
+.input-edit{
+    width: 2vw;
+    -webkit-transform: scale(2); /* For Safari */
+    transform: scale(2);
+    border: 2px solid palevioletred;
+}
+.input-date{
+    width: 25vw;
+}
+.input-category{
+    width: 56vw;
+}
+.input-subcategory{
+    width: 50vw;
+}
+.input-amount{
+    width: 25vw;
+}
+.input-delete{
+    width: 8vw;
+}
+.input-delete:disabled{
+    background-color: #eaeaea!important;
+}
+#form{
+    max-height: 65vh;
+    overflow: scroll;
+}
+@media only screen and (min-width: 700px) {
+    .input-edit{
+        -webkit-transform: scale(1); /* For Safari */
+        transform: scale(1);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+#editModal-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.editList, .deleteList{
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
+.deleteList{
+}
+
+.listItemBtnGroup{
+    display: flex;
+    justify-content: space-around;
+}
+.listItemBtn{
+    margin: 1rem;
+}
+
+#json-uploadBtn {
+    /* position: absolute;
+    right: 2.5vw;
+    top: 4vh;
+    width: 12vw;
+    padding: 3px; */
+    margin-left: auto;
+    background-color: rgb(255, 244, 89);
+    width: 15vw;
+    margin-right: 3%;
+}
+
+#formsetBtnGroup{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+.formsetBtn{
+    margin: 1rem;
+    width: 20vw;
+}
+#analysis-container{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.analysis-container-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.analysis-table-cell {
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+}

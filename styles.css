@@ -6,7 +6,7 @@ header {
     padding: 12px 0px;  /* Added vertical padding */
 }
 
-header > h2 {
+header > h3 {
     position: absolute;  /* Center the title */
     left: 50%;
     transform: translateX(-50%);
